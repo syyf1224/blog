@@ -1,0 +1,371 @@
+@use "./variables.scss" as *;
+
+/* SHUN — Minimal Paper */
+
+:root {
+  --paper-width: 760px;
+  --toc-width: 210px;
+}
+
+body {
+  letter-spacing: 0.005em;
+}
+
+.page {
+  max-width: 1120px;
+  padding: 0 2rem;
+}
+
+.page > #quartz-body {
+  grid-template-columns: minmax(0, var(--paper-width)) var(--toc-width);
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "grid-header grid-header"
+    "grid-center grid-sidebar-right"
+    "grid-footer grid-footer";
+  column-gap: 4.5rem;
+  row-gap: 0;
+  justify-content: center;
+}
+
+.page > #quartz-body:not(:has(.right.sidebar .toc)) {
+  grid-template-columns: minmax(0, var(--paper-width));
+  grid-template-areas:
+    "grid-header"
+    "grid-center"
+    "grid-footer";
+}
+
+.page > #quartz-body > .left.sidebar {
+  display: none;
+}
+
+.page > #quartz-body > .right.sidebar {
+  padding: 10.5rem 0 2rem;
+  height: 100vh;
+}
+
+.page > #quartz-body > .right.sidebar:not(:has(.toc)) {
+  display: none;
+}
+
+.page > #quartz-body > .center,
+.page > #quartz-body > footer {
+  min-width: 0;
+}
+
+.page > #quartz-body > .center {
+  grid-area: grid-center;
+  width: 100%;
+}
+
+.page > #quartz-body > .center > hr {
+  margin: 4.5rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--lightgray);
+}
+
+.page-header {
+  margin: 0 !important;
+}
+
+header {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--lightgray);
+}
+
+.page-title {
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+
+.page-title a {
+  color: var(--dark);
+}
+
+header > .flex-component {
+  margin-left: auto;
+  align-items: center;
+}
+
+.search > .search-button {
+  background: transparent;
+  border: 0;
+  padding: 0.35rem;
+}
+
+.darkmode {
+  margin: 0;
+}
+
+article,
+.popover-hint {
+  font-size: 1.04rem;
+  line-height: 1.86;
+}
+
+.popover-hint {
+  padding-top: 5.25rem;
+}
+
+.article-title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+.content-meta {
+  margin: 0.5rem 0 1rem;
+  font-family: var(--codeFont);
+  font-size: 0.76rem;
+  color: var(--gray);
+  letter-spacing: 0.025em;
+}
+
+ul.tags {
+  gap: 0.45rem;
+}
+
+ul.tags li a.internal.tag-link {
+  background: transparent;
+  border: 1px solid var(--lightgray);
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-family: var(--codeFont);
+  font-size: 0.72rem;
+  font-weight: 400;
+}
+
+article h2 {
+  margin-top: 2.6rem;
+}
+
+article h3 {
+  margin-top: 2.1rem;
+}
+
+article a.internal {
+  padding: 0;
+  border-radius: 0;
+  background: linear-gradient(var(--highlight), var(--highlight)) 0 100% / 100% 0.36em no-repeat;
+}
+
+blockquote {
+  margin: 1.6rem 0;
+  padding: 0.15rem 0 0.15rem 1.25rem;
+  border-left: 2px solid var(--secondary);
+  color: var(--darkgray);
+}
+
+pre,
+figure[data-rehype-pretty-code-figure] > pre {
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+code {
+  font-size: 0.88em;
+}
+
+.toc {
+  font-family: var(--bodyFont);
+  font-size: 0.82rem;
+  color: var(--gray);
+}
+
+.toc .toc-header {
+  font-family: var(--codeFont);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.toc a {
+  font-weight: 400;
+}
+
+body:not([data-slug="index"]) .recent-notes {
+  display: none;
+}
+
+body[data-slug="index"] .page-header > .popover-hint {
+  display: none;
+}
+
+body[data-slug="index"] .center > article {
+  padding-top: clamp(5.5rem, 12vw, 9.5rem);
+}
+
+body[data-slug="index"] .center > article h1 {
+  margin: 0;
+  font-size: clamp(3.8rem, 13vw, 8.4rem);
+  line-height: 0.9;
+  letter-spacing: -0.075em;
+  font-weight: 700;
+}
+
+body[data-slug="index"] .center > article > p:first-of-type {
+  max-width: 34rem;
+  margin: 2rem 0 2.5rem;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.75;
+  color: var(--darkgray);
+}
+
+body[data-slug="index"] .blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.4rem;
+  margin: 0;
+  font-family: var(--codeFont);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+body[data-slug="index"] .blog-nav a {
+  color: var(--dark);
+  border-bottom: 1px solid var(--gray);
+  background: none;
+}
+
+body[data-slug="index"] .center > hr {
+  margin-top: 5rem;
+}
+
+.recent-notes {
+  margin: 0;
+  padding-top: 2.25rem;
+}
+
+.recent-notes > h3 {
+  margin: 0 0 1.2rem;
+  font-family: var(--codeFont);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  color: var(--gray);
+}
+
+.recent-notes > ul.recent-ul {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--lightgray);
+}
+
+.recent-notes > ul.recent-ul > li {
+  margin: 0;
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--lightgray);
+}
+
+.recent-notes .recent-li:has(.desc a[href$="/404"]) {
+  display: none;
+}
+
+.recent-notes > ul.recent-ul:not(:has(.recent-li:not(:has(.desc a[href$="/404"])))) {
+  display: none;
+}
+
+.recent-notes .section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "title date"
+    "tags tags";
+  gap: 0.35rem 2rem;
+  align-items: baseline;
+}
+
+.recent-notes .desc {
+  grid-area: title;
+}
+
+.recent-notes .desc h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.recent-notes .desc h3 a {
+  color: var(--dark);
+  background: none !important;
+}
+
+.recent-notes .meta {
+  grid-area: date;
+  margin: 0 !important;
+  font-family: var(--codeFont);
+  font-size: 0.7rem;
+  color: var(--gray);
+  white-space: nowrap;
+}
+
+.recent-notes .tags {
+  grid-area: tags;
+  margin: 0;
+}
+
+footer {
+  margin-top: 3rem;
+  padding: 1.5rem 0 3rem;
+  border-top: 1px solid var(--lightgray);
+  font-family: var(--codeFont);
+  font-size: 0.7rem;
+  color: var(--gray);
+}
+
+@media all and (max-width: 1199px) {
+  .page > #quartz-body {
+    grid-template-columns: minmax(0, var(--paper-width));
+    grid-template-areas:
+      "grid-header"
+      "grid-center"
+      "grid-footer";
+  }
+
+  .page > #quartz-body > .right.sidebar {
+    display: none;
+  }
+}
+
+@media all and (max-width: 800px) {
+  .page {
+    padding: 0;
+  }
+
+  .page > #quartz-body {
+    padding: 0 1.15rem;
+  }
+
+  header {
+    min-height: 62px;
+  }
+
+  .popover-hint {
+    padding-top: 3.75rem;
+  }
+
+  body[data-slug="index"] .center > article {
+    padding-top: 4.5rem;
+  }
+
+  .recent-notes .section {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "date"
+      "tags";
+    gap: 0.2rem;
+  }
+}

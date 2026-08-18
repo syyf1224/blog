@@ -1,0 +1,247 @@
+# yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
+configuration:
+  pageTitle: SHUN
+  pageTitleSuffix: ""
+  enableSPA: true
+  enablePopovers: true
+  analytics: null
+  locale: zh-CN
+  baseUrl: syyf1224.github.io/blog
+  ignorePatterns:
+    - private
+    - templates
+    - .obsidian
+  theme:
+    fontOrigin: googleFonts
+    cdnCaching: true
+    typography:
+      title: Inter
+      header: Inter
+      body: Noto Sans SC
+      code: IBM Plex Mono
+    colors:
+      lightMode:
+        light: "#f7f5ef"
+        lightgray: "#e4e1d8"
+        gray: "#aaa69d"
+        darkgray: "#4b4c50"
+        dark: "#1d2026"
+        secondary: "#5d6f86"
+        tertiary: "#7d8da1"
+        highlight: rgba(93, 111, 134, 0.12)
+        textHighlight: "#dfe6ef"
+      darkMode:
+        light: "#181a1e"
+        lightgray: "#303238"
+        gray: "#74777f"
+        darkgray: "#c7c8cc"
+        dark: "#f0f0ed"
+        secondary: "#9aadc5"
+        tertiary: "#bdc8d6"
+        highlight: rgba(154, 173, 197, 0.14)
+        textHighlight: "#364456"
+
+plugins:
+  - source: "@quartz-community/note-properties"
+    enabled: true
+    options:
+      includeAll: false
+      includedProperties:
+        - description
+        - tags
+        - aliases
+      excludedProperties: []
+      hidePropertiesView: true
+      delimiters: "---"
+      language: yaml
+    order: 5
+
+  - source: "@quartz-community/created-modified-date"
+    enabled: true
+    options:
+      defaultDateType: created
+      priority:
+        - frontmatter
+        - git
+        - filesystem
+    order: 10
+
+  - source: "@quartz-community/syntax-highlighting"
+    enabled: true
+    options:
+      theme:
+        light: github-light
+        dark: github-dark
+      keepBackground: false
+    order: 20
+
+  - source: "@quartz-community/obsidian-flavored-markdown"
+    enabled: true
+    options:
+      enableInHtmlEmbed: false
+      enableCheckbox: true
+    order: 30
+
+  - source: "@quartz-community/github-flavored-markdown"
+    enabled: true
+    order: 40
+
+  - source: "@quartz-community/table-of-contents"
+    enabled: true
+    options:
+      maxDepth: 3
+      minEntries: 4
+      showByDefault: true
+      collapseByDefault: false
+    order: 50
+    layout:
+      position: right
+      priority: 20
+      display: desktop-only
+      condition: has-toc
+
+  - source: "@quartz-community/crawl-links"
+    enabled: true
+    options:
+      markdownLinkResolution: shortest
+    order: 60
+
+  - source: "@quartz-community/description"
+    enabled: true
+    order: 70
+
+  - source: "@quartz-community/latex"
+    enabled: true
+    options:
+      renderEngine: katex
+    order: 80
+
+  - source: "@quartz-community/remove-draft"
+    enabled: true
+
+  - source: "@quartz-community/unlisted-pages"
+    enabled: true
+    options: {}
+
+  - source: "@quartz-community/alias-redirects"
+    enabled: true
+
+  - source: "@quartz-community/content-index"
+    enabled: true
+    options:
+      enableSiteMap: true
+      enableRSS: true
+
+  - source: "@quartz-community/favicon"
+    enabled: true
+
+  - source: "@quartz-community/canvas-page"
+    enabled: true
+
+  - source: "@quartz-community/content-page"
+    enabled: true
+
+  - source: "@quartz-community/folder-page"
+    enabled: true
+
+  - source: "@quartz-community/tag-page"
+    enabled: true
+
+  - source: "@quartz-community/search"
+    enabled: true
+    options:
+      enablePreview: true
+    layout:
+      position: header
+      priority: 20
+      group: toolbar
+      groupOptions:
+        grow: true
+
+  - source: "@quartz-community/article-title"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 10
+      condition: not-index
+
+  - source: "@quartz-community/content-meta"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 20
+      condition: not-index
+
+  - source: "@quartz-community/tag-list"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 30
+      condition: has-tags
+
+  - source: "@quartz-community/page-title"
+    enabled: true
+    layout:
+      position: header
+      priority: 10
+
+  - source: "@quartz-community/darkmode"
+    enabled: true
+    layout:
+      position: header
+      priority: 30
+      group: toolbar
+
+  - source: "@quartz-community/footer"
+    enabled: true
+    options:
+      links:
+        GitHub: https://github.com/syyf1224/blog
+    layout:
+      position: footer
+      priority: 50
+
+  - source: "@quartz-community/recent-notes"
+    enabled: true
+    options:
+      title: ALL ENTRIES
+      limit: 100
+      linkToMore: false
+      showTags: true
+      hideTagPages: true
+      hideFolderPages: true
+    layout:
+      position: afterBody
+      priority: 10
+
+layout:
+  groups:
+    toolbar:
+      priority: 20
+      direction: row
+      gap: 0.75rem
+  byPageType:
+    "404":
+      positions:
+        beforeBody: []
+        left: []
+        right: []
+    content:
+      positions:
+        left: []
+    folder:
+      positions:
+        left: []
+        right: []
+    tag:
+      positions:
+        left: []
+        right: []
+    canvas:
+      positions:
+        left: []
+        right: []
+    bases:
+      positions:
+        left: []
+        right: []

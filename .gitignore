@@ -1,4 +1,14 @@
 .DS_Store
-_site/
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
+.gitignore
+node_modules
+public
+prof
+tsconfig.tsbuildinfo
+.obsidian
+.quartz-cache
+private/
+.replit
+replit.nix
+.quartz/
+quartz/cli/tui/dist/
+.turbo/
