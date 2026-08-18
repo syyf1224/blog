@@ -204,7 +204,7 @@ plugins:
   - source: "@quartz-community/recent-notes"
     enabled: true
     options:
-      title: ALL ENTRIES
+      title: WRITING
       limit: 100
       linkToMore: false
       showTags: true

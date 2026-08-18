@@ -5,6 +5,7 @@
 :root {
   --paper-width: 760px;
   --toc-width: 210px;
+  --reading-font: "LXGW WenKai", "Noto Sans SC", sans-serif;
 }
 
 body {
@@ -111,15 +112,24 @@ article,
   line-height: 1.86;
 }
 
+article :where(p, li, blockquote, td) {
+  font-family: var(--reading-font);
+  letter-spacing: 0.012em;
+}
+
+article :where(p, li, blockquote, td) :where(code, kbd, samp) {
+  font-family: var(--codeFont);
+}
+
 .popover-hint {
   padding-top: 5.25rem;
 }
 
 .article-title {
   margin: 0 0 0.75rem;
-  font-size: clamp(2.25rem, 6vw, 4rem);
-  line-height: 1.08;
-  letter-spacing: -0.045em;
+  font-size: clamp(2.15rem, 5.5vw, 3.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
   font-weight: 700;
   text-wrap: balance;
 }
@@ -204,22 +214,22 @@ body[data-slug="index"] .page-header > .popover-hint {
 }
 
 body[data-slug="index"] .center > article {
-  padding-top: clamp(5.5rem, 12vw, 9.5rem);
+  padding-top: clamp(4rem, 9vw, 6.75rem);
 }
 
 body[data-slug="index"] .center > article h1 {
   margin: 0;
-  font-size: clamp(3.8rem, 13vw, 8.4rem);
-  line-height: 0.9;
-  letter-spacing: -0.075em;
+  font-size: clamp(2.85rem, 8vw, 4.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
   font-weight: 700;
 }
 
 body[data-slug="index"] .center > article > p:first-of-type {
-  max-width: 34rem;
-  margin: 2rem 0 2.5rem;
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-  line-height: 1.75;
+  max-width: 38rem;
+  margin: 1.6rem 0 2.1rem;
+  font-size: clamp(1.08rem, 2vw, 1.22rem);
+  line-height: 1.85;
   color: var(--darkgray);
 }
 
@@ -240,16 +250,16 @@ body[data-slug="index"] .blog-nav a {
 }
 
 body[data-slug="index"] .center > hr {
-  margin-top: 5rem;
+  margin-top: clamp(3.5rem, 8vw, 5.25rem);
 }
 
 .recent-notes {
   margin: 0;
-  padding-top: 2.25rem;
+  padding-top: 2.5rem;
 }
 
 .recent-notes > h3 {
-  margin: 0 0 1.2rem;
+  margin: 0 0 1.35rem;
   font-family: var(--codeFont);
   font-size: 0.74rem;
   letter-spacing: 0.12em;
@@ -265,7 +275,7 @@ body[data-slug="index"] .center > hr {
 
 .recent-notes > ul.recent-ul > li {
   margin: 0;
-  padding: 1.15rem 0;
+  padding: 1.4rem 0;
   border-top: 1px solid var(--lightgray);
 }
 
@@ -283,7 +293,7 @@ body[data-slug="index"] .center > hr {
   grid-template-areas:
     "title date"
     "tags tags";
-  gap: 0.35rem 2rem;
+  gap: 0.45rem 2rem;
   align-items: baseline;
 }
 
@@ -293,8 +303,9 @@ body[data-slug="index"] .center > hr {
 
 .recent-notes .desc h3 {
   margin: 0;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.08rem;
+  line-height: 1.45;
+  font-weight: 600;
 }
 
 .recent-notes .desc h3 a {
@@ -357,7 +368,7 @@ footer {
   }
 
   body[data-slug="index"] .center > article {
-    padding-top: 4.5rem;
+    padding-top: 3.75rem;
   }
 
   .recent-notes .section {
